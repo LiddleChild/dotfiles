@@ -1,0 +1,29 @@
+[user]
+	name = Thanapat Ussawanarong
+	email = thanapat.usw@gmail.com
+
+[alias]
+	slog = log --oneline
+  cp = cherry-pick
+  s = status
+  cm = commit -m
+  cam = commit -am
+  amend = commit --amend
+  pop = stash pop
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[core]
+	excludesfile = $HOME/.gitignore_global
+  pager = delta
+
+[delta]
+  navigate = true
+
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
+
