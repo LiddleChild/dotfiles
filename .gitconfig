@@ -4,12 +4,12 @@
 
 [alias]
 	slog = log --oneline
-  cp = cherry-pick
-  s = status
-  cm = commit -m
-  cam = commit -am
-  amend = commit --amend
-  pop = stash pop
+	cp = cherry-pick
+	s = status
+	cm = commit -m
+	cam = commit -am
+	amend = commit --amend
+	pop = stash pop
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -18,12 +18,12 @@
 	required = true
 
 [core]
-	excludesfile = $HOME/.gitignore_global
-  pager = delta
+	excludesFile = ~/.gitignore_global
+	pager = delta
 
 [delta]
-  navigate = true
+	navigate = true
 
 [url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
+	insteadOf = https://github.com/
 
