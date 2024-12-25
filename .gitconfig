@@ -4,6 +4,7 @@
 
 [alias]
 	slog = log --oneline
+	glog = log --graph --decorate --all
 	cp = cherry-pick
 	s = status
 	cm = commit -m
@@ -20,6 +21,7 @@
 [core]
 	excludesFile = ~/.gitignore_global
 	pager = delta
+	editor = "nvim -f"
 
 [delta]
 	navigate = true
