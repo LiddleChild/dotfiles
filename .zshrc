@@ -117,6 +117,9 @@ source $ZSH/oh-my-zsh.sh
 alias py=python3
 alias pip=pip3
 
+# tmux
+alias tm=tmux
+
 # go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
