@@ -119,6 +119,7 @@ alias pip=pip3
 
 # tmux
 alias tm=tmux
+alias tms=tmux-sessionizer
 
 # go
 export GOPATH=$HOME/go
