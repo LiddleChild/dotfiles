@@ -764,6 +764,12 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'prettierd' },
+        yaml = { 'prettierd' },
       },
     },
   },
@@ -985,6 +991,8 @@ require('lazy').setup({
   require 'custom.plugins.vim-tmux-navigator',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.auto-session',
+
+  require 'kickstart.plugins.autotags',
 
   require 'kickstart.plugins.markdown-preview',
   vim.keymap.set('n', '<leader>md', '<cmd>MarkdownPreview<CR>'),
