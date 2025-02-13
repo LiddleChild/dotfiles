@@ -220,6 +220,18 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
+vim.api.nvim_create_user_command('EnableFormatOnSave', function()
+  vim.g.disable_autoformat = false
+end, {
+  desc = 'Enable format on save',
+})
+
+vim.api.nvim_create_user_command('DisableFormatOnSave', function()
+  vim.g.disable_autoformat = true
+end, {
+  desc = 'Disable format on save',
+})
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -742,6 +754,10 @@ require('lazy').setup({
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
+        if vim.g.disable_autoformat then
+          return
+        end
+
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
@@ -772,6 +788,9 @@ require('lazy').setup({
         yaml = { 'prettierd' },
       },
     },
+    config = function(_, opts)
+      require('conform').setup(opts)
+    end,
   },
 
   { -- Autocompletion
