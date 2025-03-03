@@ -223,6 +223,9 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- markdown preview
+vim.keymap.set('n', '<leader>md', '<cmd>MarkdownPreview<CR>')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -1019,8 +1022,9 @@ require('lazy').setup({
 
   require 'kickstart.plugins.autotags',
 
+  require 'kickstart.plugins.git-blame',
+
   require 'kickstart.plugins.markdown-preview',
-  vim.keymap.set('n', '<leader>md', '<cmd>MarkdownPreview<CR>'),
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
