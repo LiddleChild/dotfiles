@@ -23,6 +23,6 @@ return {
     vim.keymap.set('n', '<M-h>', '<cmd>BufferLineMovePrev<CR>')
     vim.keymap.set('n', '<M-l>', '<cmd>BufferLineMoveNext<CR>')
 
-    vim.keymap.set('n', '<leader>q', '<cmd>BufferLineCyclePrev<CR><cmd>BufferLineCloseRight<CR>')
+    vim.keymap.set('n', '<leader>q', '<cmd>bprevious <bar> bdelete #<CR>')
   end,
 }
