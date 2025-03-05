@@ -177,8 +177,8 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- page jumping
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
-vim.keymap.set('n', '<C-d>', '<C-d>zz')
 
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
 -- Finding
 vim.keymap.set('n', '*', '*Nzz')
 vim.keymap.set('n', 'n', 'nzzzv')
@@ -1025,6 +1025,8 @@ require('lazy').setup({
   require 'kickstart.plugins.git-blame',
 
   require 'kickstart.plugins.markdown-preview',
+
+  require 'kickstart.plugins.bufferline',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
