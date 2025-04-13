@@ -136,19 +136,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Herd injected PHP 8.3 configuration.
-export HERD_PHP_83_INI_SCAN_DIR="/Users/bosstnp/Library/Application Support/Herd/config/php/83/"
-
-# Herd injected PHP 8.4 configuration.
-export HERD_PHP_84_INI_SCAN_DIR="/Users/bosstnp/Library/Application Support/Herd/config/php/84/"
-
-# Herd injected PHP 7.4 configuration.
-export HERD_PHP_74_INI_SCAN_DIR="/Users/bosstnp/Library/Application Support/Herd/config/php/74/"
-
-# Herd injected PHP binary.
-export PATH="/Users/bosstnp/Library/Application Support/Herd/bin/":$PATH
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # space begin
 # THIS IS MANAGED BY SPACE. DO NOT EDIT.
 export SPACE_DIR=$HOME/.config/space
