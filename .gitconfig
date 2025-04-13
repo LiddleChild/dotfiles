@@ -11,6 +11,9 @@
 	cam = commit -am
 	amend = commit --amend
 	pop = stash pop
+	b = branch
+	co = checkout
+	sw = switch
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
