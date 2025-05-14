@@ -156,8 +156,8 @@ eval "$(pyenv init -)"
 
 # history
 HISTFILE=$HOME/.zhistory
-SAVEHIST=1000
-HISTSIZE=999
+SAVEHIST=10000
+HISTSIZE=9999
 
 setopt share_history
 setopt hist_expire_dups_first
