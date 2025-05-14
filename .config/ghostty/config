@@ -1,6 +1,7 @@
 macos-option-as-alt = left
 
 font-family = "MesloLGS Nerd Font"
+font-family = "MesloLGS NF"
 font-size = 14
 
 window-width = 120
