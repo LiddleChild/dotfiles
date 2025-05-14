@@ -125,6 +125,9 @@ alias tms=tmux-sessionizer
 export PATH=$PATH:$HOME/bin/.local
 bindkey -s ^f "tmux-sessionizer\n"
 
+# lazygit
+alias lg=lazygit
+
 # go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
