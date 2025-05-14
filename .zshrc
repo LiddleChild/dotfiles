@@ -119,7 +119,11 @@ alias pip=pip3
 
 # tmux
 alias tm=tmux
+
+# tmux-sessionizer
 alias tms=tmux-sessionizer
+export PATH=$PATH:$HOME/bin/.local
+bindkey -s ^f "tmux-sessionizer\n"
 
 # go
 export GOPATH=$HOME/go
