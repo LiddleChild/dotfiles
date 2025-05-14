@@ -166,3 +166,15 @@ setopt hist_verify
 
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/bosstnp/.dart-cli-completion/zsh-config.zsh ]] && . /Users/bosstnp/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+# flutter
+export PATH="$PATH:/Users/bosstnp/fvm/default/bin"
+
+# jdk
+export PATH="$PATH:/opt/homebrew/opt/openjdk@17/bin"
+export JAVA_HOME="/opt/homebrew/opt/openjdk@17"
