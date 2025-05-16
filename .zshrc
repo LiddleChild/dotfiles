@@ -119,11 +119,14 @@ alias pip=pip3
 
 # tmux
 alias tm=tmux
+alias tms=tmux-sessionpane
 
-# tmux-sessionizer
-alias tms=tmux-sessionizer
+# personal scripts
 export PATH=$PATH:$HOME/bin/.local
-bindkey -s ^f "tmux-sessionizer\n"
+
+# execute space without new shell
+alias space=". space"
+bindkey -s ^f "space\n"
 
 # lazygit
 alias lg=lazygit
