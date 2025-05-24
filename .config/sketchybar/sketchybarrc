@@ -1,0 +1,123 @@
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+### DARK BACKGROUND
+# FOREGROUND_COLOR=0xffffffff
+# BACKGROUND_COLOR=0xff444444
+
+### LIGHT BACKGROUND
+FOREGROUND_COLOR=0xff000000
+BACKGROUND_COLOR=0xffeeeeee
+
+##### Bar Appearance #####
+sketchybar --bar \
+             padding_left=8 \
+             padding_right=8 \
+             position=top \
+             height=37 \
+             blur_radius=32 \
+             color=0x00000000
+
+##### Changing Defaults #####
+sketchybar --default \
+           padding_left=4 \
+           padding_right=4 \
+           icon.font="SF Pro:Regular:12.0" \
+           label.font="SF Pro:Regular:14.0" \
+           icon.color=$FOREGROUND_COLOR \
+           label.color=$FOREGROUND_COLOR \
+           background.color=$BACKGROUND_COLOR \
+           background.height=24 \
+           icon.padding_left=8 \
+           icon.padding_right=4 \
+           label.padding_left=4 \
+           label.padding_right=8
+
+##### Apple #####
+sketchybar --add item apple left \
+           --set apple \
+                 background.drawing=false \
+                 icon="􀣺" \
+                 icon.color=$FOREGROUND_COLOR \
+                 icon.font.size=16
+
+##### Aerospace workspaces #####
+sketchybar --add event aerospace_mode_change
+sketchybar --add item mode left \
+           --subscribe mode aerospace_mode_change \
+           --set mode \
+                 padding_left=0 \
+                 padding_right=0 \
+                 icon.drawing=false \
+                 label.font.family="Hack Nerd Font" \
+                 label.padding_left=12 \
+                 label.padding_right=12 \
+                 background.drawing=false \
+                 script="$CONFIG_DIR/plugins/aerospace_mode.sh $BACKGROUND_COLOR"
+
+sketchybar --add event aerospace_workspace_change
+for sid in $(aerospace list-workspaces --all); do
+    sketchybar --add item space.$sid left \
+        --subscribe space.$sid aerospace_workspace_change \
+        --set space.$sid \
+              padding_left=0 \
+              padding_right=0 \
+              label.font.family="Hack Nerd Font" \
+              label="$sid" \
+              label.padding_left=12 \
+              label.padding_right=12 \
+              label.color=$FOREGROUND_COLOR \
+              background.color=$BACKGROUND_COLOR \
+              background.corner_radius=8 \
+              icon.drawing=false \
+              click_script="aerospace workspace $sid" \
+              script="$CONFIG_DIR/plugins/aerospace_workspace.sh $sid $BACKGROUND_COLOR $FOREGROUND_COLOR"
+
+    source ./plugins/aerospace_workspace.sh $sid $BACKGROUND_COLOR $FOREGROUND_COLOR
+done
+
+sketchybar --add bracket aerospace mode '/space\..*/' \
+           --set aerospace \
+                 background.corner_radius=8 \
+                 background.color=$BACKGROUND_COLOR
+
+##### App name #####
+sketchybar --add item front_app left \
+           --subscribe front_app front_app_switched \
+           --set front_app \
+                 padding_left=8 \
+                 background.corner_radius=8 \
+                 background.drawing=false \
+                 icon.drawing=false \
+                 label.padding_left=8 \
+                 label.padding_right=8 \
+                 label.font.style=Bold \
+                 script="$PLUGIN_DIR/front_app.sh"
+
+##### Statusbar #####
+sketchybar --add item status.calendar right \
+           --set status.calendar \
+                 update_freq=30 \
+                 icon="􀧞" \
+                 script="$PLUGIN_DIR/calendar.sh" \
+                 background.drawing=false
+
+sketchybar --add item status.volume right \
+           --subscribe status.volume volume_change \
+           --set status.volume \
+                 script="$PLUGIN_DIR/volume.sh" \
+                 background.drawing=false
+
+sketchybar --add item status.battery right \
+           --subscribe status.battery system_woke power_source_change \
+           --set status.battery \
+                 update_freq=120 \
+                 script="$PLUGIN_DIR/battery.sh" \
+                 background.drawing=false
+
+sketchybar --add bracket statusbar '/status\..*/' \
+           --set statusbar \
+                 background.corner_radius=8 \
+                 background.color=$BACKGROUND_COLOR
+
+##### Force all scripts to run the first time (never do this in a script) #####
+sketchybar --update
