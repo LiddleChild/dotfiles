@@ -86,10 +86,11 @@ sketchybar --add item front_app left \
            --subscribe front_app front_app_switched \
            --set front_app \
                  padding_left=8 \
+                 background.image.padding_left=4 \
+                 background.image.scale=0.75 \
                  background.corner_radius=8 \
-                 background.drawing=false \
                  icon.drawing=false \
-                 label.padding_left=8 \
+                 label.padding_left=32 \
                  label.padding_right=8 \
                  label.font.style=Bold \
                  script="$PLUGIN_DIR/front_app.sh"
