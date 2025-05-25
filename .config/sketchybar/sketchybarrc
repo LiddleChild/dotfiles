@@ -8,6 +8,8 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 FOREGROUND_COLOR=0xff000000
 BACKGROUND_COLOR=0xffeeeeee
 
+RED=0xffff1300
+
 ##### Bar Appearance #####
 sketchybar --bar \
              padding_left=8 \
@@ -27,10 +29,10 @@ sketchybar --default \
            label.color=$FOREGROUND_COLOR \
            background.color=$BACKGROUND_COLOR \
            background.height=24 \
-           icon.padding_left=8 \
-           icon.padding_right=4 \
-           label.padding_left=4 \
-           label.padding_right=8
+           icon.padding_left=4 \
+           icon.padding_right=2 \
+           label.padding_left=2 \
+           label.padding_right=4
 
 ##### Apple #####
 sketchybar --add item apple left \
@@ -64,8 +66,8 @@ for sid in $(aerospace list-workspaces --all); do
               padding_right=0 \
               label.font.family="Hack Nerd Font" \
               label="$sid" \
-              label.padding_left=12 \
-              label.padding_right=12 \
+              label.padding_left=8 \
+              label.padding_right=8 \
               label.color=$FOREGROUND_COLOR \
               background.color=$BACKGROUND_COLOR \
               background.corner_radius=8 \
@@ -92,6 +94,20 @@ sketchybar --add item front_app left \
                  label.font.style=Bold \
                  script="$PLUGIN_DIR/front_app.sh"
 
+##### E #####
+sketchybar --add item noti.slack e \
+           --set noti.slack \
+                 update_freq=30 \
+                 icon="" \
+                 icon.font.family="Hack Nerd Font" \
+                 icon.padding_left=8 \
+                 label.font.family="Hack Nerd Font" \
+                 label.color=$RED \
+                 label.padding_right=8 \
+                 background.corner_radius=8 \
+                 click_script="open /Applications/Slack.app" \
+                 script="$PLUGIN_DIR/slack.sh" \
+
 ##### Statusbar #####
 sketchybar --add item status.calendar right \
            --set status.calendar \
@@ -100,17 +116,30 @@ sketchybar --add item status.calendar right \
                  script="$PLUGIN_DIR/calendar.sh" \
                  background.drawing=false
 
+sketchybar --add item status.wifi right \
+           --subscribe status.wifi wifi_change \
+           --set status.wifi \
+                 script="RED=$RED FOREGROUND_COLOR=$FOREGROUND_COLOR $PLUGIN_DIR/wifi.sh" \
+                 label.drawing=false \
+                 icon.padding_left=4 \
+                 icon.padding_right=4 \
+                 background.drawing=false
+
 sketchybar --add item status.volume right \
            --subscribe status.volume volume_change \
            --set status.volume \
-                 script="$PLUGIN_DIR/volume.sh" \
+                 script="RED=$RED FOREGROUND_COLOR=$FOREGROUND_COLOR $PLUGIN_DIR/volume.sh" \
+                 label.drawing=false \
+                 width=24 \
+                 align=center \
                  background.drawing=false
 
 sketchybar --add item status.battery right \
            --subscribe status.battery system_woke power_source_change \
            --set status.battery \
                  update_freq=120 \
-                 script="$PLUGIN_DIR/battery.sh" \
+                 script="RED=$RED FOREGROUND_COLOR=$FOREGROUND_COLOR $PLUGIN_DIR/battery.sh" \
+                 align=left \
                  background.drawing=false
 
 sketchybar --add bracket statusbar '/status\..*/' \
