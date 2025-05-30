@@ -1024,6 +1024,7 @@ require('lazy').setup({
 
   require 'kickstart.plugins.git-blame',
 
+  require 'kickstart.plugins.render-markdown',
   require 'kickstart.plugins.markdown-preview',
 
   require 'kickstart.plugins.bufferline',
