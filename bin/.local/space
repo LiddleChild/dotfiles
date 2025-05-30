@@ -14,7 +14,7 @@ entries=~/.config/space/entries
 selected=$({
     eval "find $(paste -s -d ' ' $workspaces) -mindepth 1 -maxdepth 1 -type d"; # find every subdirectory
     eval "realpath $(paste -s -d ' ' $entries)"; # resolve and append every paths
-} | sort -u | fzf)
+} | sort -u | fzf --tmux)
 
 if [[ ! -z $selected ]]; then
     # outside tmux
