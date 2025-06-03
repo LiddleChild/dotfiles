@@ -1,3 +1,18 @@
+# trigger when aerospace is not launched
+if [[ -z $(ps aux | rg Aerospace -i | rg -v rg) ]]; then
+    sketchybar --bar hidden=true
+    # defaults write NSGlobalDomain _HIHideMenuBar -bool false
+    defaults write com.apple.dock autohide -bool false
+    killall Finder && killall Dock && exit 0
+
+# trigger when areospace is launched
+else
+    sketchybar --bar hidden=false
+    # defaults write NSGlobalDomain _HIHideMenuBar -bool true
+    defaults write com.apple.dock autohide -bool true
+    killall Finder && killall Dock
+fi
+
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 ### DARK BACKGROUND
