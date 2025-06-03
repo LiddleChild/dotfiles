@@ -57,7 +57,7 @@ sketchybar --add item mode left \
                  script="$CONFIG_DIR/plugins/aerospace_mode.sh $BACKGROUND_COLOR"
 
 sketchybar --add event aerospace_workspace_change
-for sid in $(aerospace list-workspaces --all); do
+for sid in $(./workspaces.py u i o p n m); do
     name="space.$sid"
     sketchybar --add item $name left \
         --subscribe $name aerospace_workspace_change \
