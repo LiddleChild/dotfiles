@@ -1,0 +1,49 @@
+" Plugins
+Plug 'https://github.com/machakann/vim-highlightedyank'
+
+set which-key
+set notimeout
+
+" Configs
+let mapleader=" "
+
+set clipboard=unnamed
+
+set relativenumber
+
+" searching
+set ignorecase
+set smartcase
+
+" search highlighting
+set hlsearch
+nnoremap <Esc> :nohlsearch<CR>
+
+" Keymappings
+map <leader>rn <Action>(RenameElement)
+map <leader>sf <Action>(GotoFile)
+map <leader>sg <Action>(FindInPath)
+
+map gh <Action>(ShowErrorDescription)
+map gI <Action>(GotoImplementation)
+map gc <Action>(CommentByLineComment)
+
+" Move line up / down
+xnoremap K :m '<-2<CR>gv=gv
+xnoremap J :m '>+1<CR>gv=gv
+
+" Paste without copying
+xnoremap <leader>p "_dP
+
+" Finding
+nnoremap * *Nzz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Pane navigation
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+
+" Tab navigation
+map H <Action>(PreviousTab)
+map L <Action>(NextTab)
