@@ -145,12 +145,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# space begin
-# THIS IS MANAGED BY SPACE. DO NOT EDIT.
-export SPACE_DIR=$HOME/.config/space
-[[ -f $SPACE_DIR/scripts/space.zsh ]] && source $SPACE_DIR/scripts/space.zsh
-# space end
-
 export PATH="$(pyenv root)/shims:${PATH}"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
