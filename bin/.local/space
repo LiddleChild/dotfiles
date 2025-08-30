@@ -14,23 +14,29 @@ entries=~/.config/space/entries
 selected=$({
     eval "find $(paste -s -d ' ' $workspaces) -mindepth 1 -maxdepth 1 -type d"; # find every subdirectory
     eval "realpath $(paste -s -d ' ' $entries)"; # resolve and append every paths
-} | sort -u | fzf --tmux)
+} | sort -u | fzf)
 
 if [[ ! -z $selected ]]; then
+    selected_name=$(basename "$selected" | tr . _)
+
     # outside tmux
     if [[ -z $TMUX ]]; then
-        selected_name=$(basename "$selected" | tr . _)
-
-        # create new session if not exists
         if ! tmux has-session -t=$selected_name 2> /dev/null; then
-            tmux new-session -ds $selected_name -c $selected
+            # create one if does not exist
+            tmux new-session -s $selected_name -c $selected
+        else
+            # attach it if it does exist
+            tmux attach -t $selected_name
         fi
-
-        # attach session
-        tmux attach -t $selected_name
 
     # inside tmux
     else
-        cd $selected && exec $SHELL
+        if ! tmux has-session -t=$selected_name 2> /dev/null; then
+            # create detached session or tmux will yell us to handle nesting session with care
+            tmux new-session -ds $selected_name -c $selected
+        fi
+
+        # switch session
+        tmux switch-client -t $selected_name
     fi
 fi

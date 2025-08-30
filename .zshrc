@@ -125,7 +125,6 @@ alias tms=tmux-sessionpane
 export PATH=$PATH:$HOME/bin/.local
 
 # execute space without new shell
-alias space=". space"
 bindkey -s ^f "space\n"
 
 # lazygit
