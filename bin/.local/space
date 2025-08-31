@@ -21,22 +21,22 @@ if [[ ! -z $selected ]]; then
 
     # outside tmux
     if [[ -z $TMUX ]]; then
-        if ! tmux has-session -t=$selected_name 2> /dev/null; then
+        if ! tmux has-session -t $selected_name 2> /dev/null; then
             # create one if does not exist
-            tmux new-session -s $selected_name -c $selected
+            tmux new-session -s "$selected_name" -c "$selected"
         else
             # attach it if it does exist
-            tmux attach -t $selected_name
+            tmux attach -t "$selected_name"
         fi
 
     # inside tmux
     else
-        if ! tmux has-session -t=$selected_name 2> /dev/null; then
+        if ! tmux has-session -t $selected_name 2> /dev/null; then
             # create detached session or tmux will yell us to handle nesting session with care
-            tmux new-session -ds $selected_name -c $selected
+            tmux new-session -ds "$selected_name" -c "$selected"
         fi
 
         # switch session
-        tmux switch-client -t $selected_name
+        tmux switch-client -t "$selected_name"
     fi
 fi
