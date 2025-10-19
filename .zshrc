@@ -124,8 +124,8 @@ alias tms=tmux-sessionpane
 # personal scripts
 export PATH=$PATH:$HOME/bin/.local
 
-# execute space without new shell
-bindkey -s ^f "space\n"
+# execute tmux-sessionizer without new shell
+bindkey -s ^f "tmux-sessionizer\n"
 
 # lazygit
 alias lg=lazygit
