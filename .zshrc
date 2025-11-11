@@ -119,7 +119,7 @@ alias pip=pip3
 
 # tmux
 alias tm=tmux
-alias tms=tmux-sessionpane
+alias tms=tmux-sessionizer
 
 # personal scripts
 export PATH=$PATH:$HOME/bin/.local
