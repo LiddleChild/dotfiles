@@ -1028,9 +1028,11 @@ require('lazy').setup({
 
   require 'kickstart.plugins.git-blame',
 
-  require 'kickstart.plugins.render-markdown',
+  -- require 'kickstart.plugins.render-markdown',
 
   require 'kickstart.plugins.bufferline',
+
+  require 'kickstart.plugins.markview',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
