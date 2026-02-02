@@ -17,7 +17,7 @@ set smartcase
 
 " search highlighting
 set hlsearch
-nnoremap <Esc> :nohlsearch<CR>
+nnoremap <Esc> :action EditorEscape<CR>:nohlsearch<CR>
 
 " Keymappings
 map <leader>rn <Action>(RenameElement)
