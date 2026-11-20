@@ -1,3 +1,5 @@
 .DS_Store
-nocommit/
+nocommit
 .idea
+
+**/.claude/settings.local.json
